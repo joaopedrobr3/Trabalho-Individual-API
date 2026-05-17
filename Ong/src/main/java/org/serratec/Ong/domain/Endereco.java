@@ -1,10 +1,64 @@
 package org.serratec.Ong.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "endereco")
 public class Endereco {
+    
+    @NotBlank(message = "O campo 'cidade' não pode ficar vazio")
+    @Size(max = 30)
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+    
+    @NotBlank(message = "O campo 'rua' não pode ficar vazio")
+    @Size(max = 50)
+    @Column(name = "rua", nullable = false)
+    private String rua;
+    
+    @NotBlank(message = "O campo 'bairro' não pode ficar vazio")
+    @Size(max = 30)
+    @Column(name = "bairro", nullable = false)
+    private String bairro;
+    
+    @Column(name = "numero", nullable = true)
+    private Integer numero;
 
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+   
 }
