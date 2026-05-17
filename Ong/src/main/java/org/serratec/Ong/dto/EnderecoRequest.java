@@ -2,6 +2,7 @@ package org.serratec.Ong.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 public class EnderecoRequest {
@@ -17,7 +18,8 @@ public class EnderecoRequest {
     @NotBlank(message = "O campo 'bairro' não pode ficar vazio")
     @Size(max = 30)
     private String bairro;
-
+    
+    @Positive(message = "O número precisa ser positivo")
     private Integer numero;
 
     public String getCidade() {

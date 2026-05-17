@@ -1,8 +1,11 @@
 package org.serratec.Ong.dto;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class PessoaRequest {
@@ -14,9 +17,11 @@ public class PessoaRequest {
 
     @NotBlank(message = "O campo 'telefone' não pode ficar vazio")
     @Size(max = 10, min = 10, message = "O telefone precisa ter 10 caracteres!")
+    @Pattern(regexp = "\\d{10}", message = "O telefone deve conter apenas números")
     private String telefone;
 
     @NotBlank(message = "O campo 'cpf' não pode ficar vazio")
+    @CPF
     @Size(max = 11, min = 11, message = "O CPF precisa ter 11 caracteres!")
     private String cpf;
 
@@ -25,7 +30,8 @@ public class PessoaRequest {
 
     @NotNull(message = "O campo 'idEndereco' não pode ficar vazio")
     private Long idEndereco;
-
+    
+    
    
     public String getNome() {
         return nome;
