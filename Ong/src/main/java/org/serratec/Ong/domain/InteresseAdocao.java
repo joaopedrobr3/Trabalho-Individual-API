@@ -2,11 +2,15 @@ package org.serratec.Ong.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -41,7 +45,13 @@ public class InteresseAdocao {
     @NotBlank(message = "O campo 'tipoMoradia' não pode ficar vazio")
     @Column(name = "tipo_moradia", nullable = false)
     private String tipoMoradia;
+    
+    @OneToOne
+    @JsonManagedReference
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
+    
     public Long getId() {
         return id;
     }
@@ -88,6 +98,14 @@ public class InteresseAdocao {
 
     public void setTipoMoradia(String tipoMoradia) {
         this.tipoMoradia = tipoMoradia;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
 

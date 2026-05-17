@@ -2,11 +2,16 @@ package org.serratec.Ong.domain;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -38,8 +43,17 @@ public class Pessoa {
     @Email(message = "O campo 'email' precisa ser um email válido")
     @Column(name = "email")
     private String email;
-
     
+    @OneToOne(mappedBy = "id_interesse_adocao")
+    @JsonBackReference
+    private InteresseAdocao interesseAdocao;
+    
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "id_pessoa", nullable = false)
+    private Endereco endereco;
+    
+
     
     public Long getId() {
         return id;
@@ -79,6 +93,22 @@ public class Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public InteresseAdocao getInteresseAdocao() {
+        return interesseAdocao;
+    }
+
+    public void setInteresseAdocao(InteresseAdocao interesseAdocao) {
+        this.interesseAdocao = interesseAdocao;
     }
 
     

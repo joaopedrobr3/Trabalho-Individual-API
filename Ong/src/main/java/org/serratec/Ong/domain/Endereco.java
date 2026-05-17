@@ -1,7 +1,12 @@
 package org.serratec.Ong.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -27,7 +32,12 @@ public class Endereco {
     
     @Column(name = "numero", nullable = true)
     private Integer numero;
+    
+    @JsonManagedReference
+    @OneToMany(mappedBy = "pessoa")
+    private List<Pessoa> pessoa;
 
+    
     public String getCidade() {
         return cidade;
     }
@@ -59,6 +69,16 @@ public class Endereco {
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
+
+    public List<Pessoa> getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(List<Pessoa> pessoa) {
+        this.pessoa = pessoa;
+    }
+
+   
 
    
 }
