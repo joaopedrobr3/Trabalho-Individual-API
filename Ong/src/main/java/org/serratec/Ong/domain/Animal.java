@@ -24,9 +24,9 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O campo 'especie' não pode ficar vazio")
-    @Column( name = "especie", nullable = false)
-    private String especie;
+    @NotBlank(message = "O campo 'nome' não pode ser vazio")
+    @Column(name = "nome", nullable = false)
+    private String nome;
     
     @NotBlank(message = "O campo 'porte' não pode ficar vazio")
     @Column(name = "porte", nullable = false)
@@ -60,13 +60,7 @@ public class Animal {
         this.id = id;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
+   
 
     public String getPorte() {
         return porte;
@@ -100,6 +94,14 @@ public class Animal {
 
     public void setInteresse(List<InteresseAdocao> interesse) {
         this.interesse = interesse;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
    

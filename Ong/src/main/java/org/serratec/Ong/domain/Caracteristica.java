@@ -29,8 +29,6 @@ public class Caracteristica {
     @Column(name = "saude", nullable = false)
     private String saude;
     
-    @Column(name = "comentario_adicional", nullable = true)
-    private String comentarioAdicional;
     
     @ManyToMany(mappedBy = "caracteristica")
     @JsonBackReference
@@ -61,13 +59,7 @@ public class Caracteristica {
         this.saude = saude;
     }
 
-    public String getComentarioAdicional() {
-        return comentarioAdicional;
-    }
-
-    public void setComentarioAdicional(String comentarioAdicional) {
-        this.comentarioAdicional = comentarioAdicional;
-    }
+    
 
     public List<Animal> getAnimal() {
         return animal;
