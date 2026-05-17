@@ -2,10 +2,14 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +18,10 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "endereco")
 public class Endereco {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     @NotBlank(message = "O campo 'cidade' não pode ficar vazio")
     @Size(max = 30)
@@ -33,8 +41,8 @@ public class Endereco {
     @Column(name = "numero", nullable = true)
     private Integer numero;
     
-    @JsonManagedReference
-    @OneToMany(mappedBy = "pessoa")
+    @OneToMany(mappedBy = "endereco")
+    @JsonBackReference
     private List<Pessoa> pessoa;
 
     

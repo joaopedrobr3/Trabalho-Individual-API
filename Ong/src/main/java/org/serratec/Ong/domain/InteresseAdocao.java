@@ -2,7 +2,7 @@ package org.serratec.Ong.domain;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,9 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
@@ -25,7 +26,7 @@ public class InteresseAdocao {
     private Long id;
     
     @Past(message = "O campo 'dataSolicitacao' precisa ser preenchido com uma data passada")
-    @NotBlank(message = "O campo 'dataSolicitacao' não pode ficar vazio")
+    @NotNull(message = "O campo 'dataSolicitacao' não pode ficar vazio")
     @Column(name = "data_solicitacao", nullable = false)
     private LocalDate dataSolicitacao;
     
@@ -38,7 +39,7 @@ public class InteresseAdocao {
     @Column(name = "motivacao", nullable = false, length = 500)
     private String motivacao;
     
-    @NotBlank(message = "O campo 'experienciaPrevia' não pode ficar vazio")
+    @NotNull(message = "O campo 'experienciaPrevia' não pode ficar vazio")
     @Column(name = "experiencia_previa", nullable = false)
     private Boolean experienciaPrevia;
     
@@ -46,11 +47,18 @@ public class InteresseAdocao {
     @Column(name = "tipo_moradia", nullable = false)
     private String tipoMoradia;
     
-    @OneToOne
-    @JsonManagedReference
+    @ManyToOne
     @JoinColumn(name = "id_pessoa")
+    @JsonBackReference ("pessoa-interesse")
     private Pessoa pessoa;
 
+    @ManyToOne
+    @JoinColumn(name = "id_animal")
+    @JsonBackReference ("animal-interesse")
+    private Animal animal;
+    
+    
+  
     
     public Long getId() {
         return id;
@@ -106,6 +114,14 @@ public class InteresseAdocao {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public Animal getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
     }
 
 

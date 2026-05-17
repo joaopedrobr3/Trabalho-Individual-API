@@ -1,8 +1,12 @@
 package org.serratec.Ong.domain;
 
+
+
+import java.util.List;
+
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -44,16 +48,15 @@ public class Pessoa {
     @Column(name = "email")
     private String email;
     
-    @OneToOne(mappedBy = "id_interesse_adocao")
-    @JsonBackReference
-    private InteresseAdocao interesseAdocao;
+    @OneToMany(mappedBy = "pessoa")
+    @JsonManagedReference ("pessoa-interesse")
+    private List<InteresseAdocao> interesse;
     
     @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "id_pessoa", nullable = false)
+    @JoinColumn(name = "id_endereco", nullable = false)  
+    @JsonManagedReference
     private Endereco endereco;
     
-
     
     public Long getId() {
         return id;
@@ -103,13 +106,17 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    public InteresseAdocao getInteresseAdocao() {
-        return interesseAdocao;
+    public List<InteresseAdocao> getInteresse() {
+        return interesse;
     }
 
-    public void setInteresseAdocao(InteresseAdocao interesseAdocao) {
-        this.interesseAdocao = interesseAdocao;
+    public void setInteresse(List<InteresseAdocao> interesse) {
+        this.interesse = interesse;
     }
+
+   
+
+    
 
     
     

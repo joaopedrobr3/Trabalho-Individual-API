@@ -2,13 +2,13 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -32,13 +32,10 @@ public class Caracteristica {
     @Column(name = "comentario_adicional", nullable = true)
     private String comentarioAdicional;
     
-    @ManyToMany
-    @JoinTable(
-        name = "caracteristica_animal",
-        joinColumns = @JoinColumn(name = "id_caracteristica"),
-        inverseJoinColumns = @JoinColumn(name = "id_animal")
-    )
+    @ManyToMany(mappedBy = "caracteristica")
+    @JsonBackReference
     private List<Animal> animal;
+    
     
     public Long getId() {
         return id;
@@ -71,6 +68,16 @@ public class Caracteristica {
     public void setComentarioAdicional(String comentarioAdicional) {
         this.comentarioAdicional = comentarioAdicional;
     }
+
+    public List<Animal> getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
+    }
+
+   
 
     
     
