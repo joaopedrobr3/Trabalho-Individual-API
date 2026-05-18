@@ -17,10 +17,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "interesse_adocao")
@@ -30,27 +26,24 @@ public class InteresseAdocao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Past(message = "O campo 'dataSolicitacao' precisa ser preenchido com uma data passada")
-    @NotNull(message = "O campo 'dataSolicitacao' não pode ficar vazio")
+    
+    
     @Column(name = "data_solicitacao", nullable = false)
     private LocalDate dataSolicitacao;
     
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'status' não pode ficar vazio")
     @Column(name = "status", nullable = false)
     private Status status;
     
-    @NotBlank(message = "O campo motivacao não pode ficar vazio")
-    @Size(max = 500, message = "O campo de motivação deve ser preenchido com no máximo 500 caracteres")
+   
     @Column(name = "motivacao", nullable = false, length = 500)
     private String motivacao;
     
-    @NotNull(message = "O campo 'experienciaPrevia' não pode ficar vazio")
+    
     @Column(name = "experiencia_previa", nullable = false)
     private Boolean experienciaPrevia;
     
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'tipoMoradia' não pode ficar vazio")
     @Column(name = "tipo_moradia", nullable = false)
     private TipoMoradia tipoMoradia;
     

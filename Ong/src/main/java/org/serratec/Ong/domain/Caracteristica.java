@@ -16,7 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "caracteristica")
@@ -28,13 +28,11 @@ public class Caracteristica {
     
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'personalidade' não pode ficar vazio")
     @Column(name = "personalidade", nullable = false)
     private Personalidade personalidade;
     
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'saude' não pode ficar vazio")
     @Column(name = "saude", nullable = false)
     private Saude saude;
     

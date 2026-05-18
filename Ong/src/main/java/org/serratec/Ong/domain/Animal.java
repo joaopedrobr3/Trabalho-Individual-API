@@ -20,7 +20,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name = "animal")
@@ -30,22 +30,19 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O campo 'nome' não pode ficar vazio")
+    
     @Column(name = "nome", nullable = false)
     private String nome;
     
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'sexo' não pode ficar vazio")
     @Column(name = "sexo", nullable = false)
     private Sexo sexo;
     
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'porte' não pode ficar vazio")
     @Column(name = "porte", nullable = false)
     private Porte porte;
     
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "O campo 'raca' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD")
     @Column(name = "raca", nullable = false)
     private Raca raca;
     

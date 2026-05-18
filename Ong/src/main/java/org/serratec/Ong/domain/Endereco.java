@@ -12,8 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "endereco")
@@ -23,18 +21,12 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O campo 'cidade' não pode ficar vazio")
-    @Size(max = 30)
     @Column(name = "cidade", nullable = false)
     private String cidade;
     
-    @NotBlank(message = "O campo 'rua' não pode ficar vazio")
-    @Size(max = 50)
     @Column(name = "rua", nullable = false)
     private String rua;
     
-    @NotBlank(message = "O campo 'bairro' não pode ficar vazio")
-    @Size(max = 30)
     @Column(name = "bairro", nullable = false)
     private String bairro;
     

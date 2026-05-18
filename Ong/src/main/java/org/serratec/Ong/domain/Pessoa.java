@@ -4,7 +4,7 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.br.CPF;
+
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -17,9 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "pessoa")
@@ -29,22 +27,19 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O campo 'nome' não pode ficar vazio")
+   
     @Column(name = "nome", nullable = false)
     private String nome;
     
-    @NotBlank(message = "O campo 'telefone' não pode ficar vazio")
-    @Size(max = 10, min = 10, message = "O telefone precisa ter 10 caracteres! Digite apenas números")
+    
     @Column(name = "telefone", nullable = false, length = 10)
     private String telefone;
     
-    @NotBlank(message = "O campo 'cpf' não pode ficar vazio")
-    @CPF
-    @Size(max = 11, min = 11, message = "O CPF precisa ter 11 caracteres! Digite apenas números" )
+    
     @Column(name = "cpf", nullable = false, length = 11)
     private String cpf;
     
-    @Email(message = "O campo 'email' precisa ser um email válido")
+    
     @Column(name = "email")
     private String email;
     
