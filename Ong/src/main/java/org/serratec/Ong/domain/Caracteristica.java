@@ -2,10 +2,15 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
+import org.serratec.Ong.enummerated.Personalidade;
+import org.serratec.Ong.enummerated.Saude;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,13 +26,17 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'personalidade' não pode ficar vazio")
     @Column(name = "personalidade", nullable = false)
-    private String personalidade;
+    private Personalidade personalidade;
     
+
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'saude' não pode ficar vazio")
     @Column(name = "saude", nullable = false)
-    private String saude;
+    private Saude saude;
     
     
     @ManyToMany(mappedBy = "caracteristica")
@@ -43,24 +52,7 @@ public class Caracteristica {
         this.id = id;
     }
 
-    public String getPersonalidade() {
-        return personalidade;
-    }
-
-    public void setPersonalidade(String personalidade) {
-        this.personalidade = personalidade;
-    }
-
-    public String getSaude() {
-        return saude;
-    }
-
-    public void setSaude(String saude) {
-        this.saude = saude;
-    }
-
     
-
     public List<Animal> getAnimal() {
         return animal;
     }
@@ -69,8 +61,24 @@ public class Caracteristica {
         this.animal = animal;
     }
 
-   
+    public Personalidade getPersonalidade() {
+        return personalidade;
+    }
 
+    public void setPersonalidade(Personalidade personalidade) {
+        this.personalidade = personalidade;
+    }
+
+    public Saude getSaude() {
+        return saude;
+    }
+
+    public void setSaude(Saude saude) {
+        this.saude = saude;
+    }
+
+   
+    
     
     
 }

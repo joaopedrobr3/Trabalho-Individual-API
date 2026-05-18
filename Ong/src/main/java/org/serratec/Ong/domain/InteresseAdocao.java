@@ -1,11 +1,16 @@
 package org.serratec.Ong.domain;
 
+import java.io.ObjectInputFilter.Status;
 import java.time.LocalDate;
+
+import org.serratec.Ong.enummerated.TipoMoradia;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,9 +35,10 @@ public class InteresseAdocao {
     @Column(name = "data_solicitacao", nullable = false)
     private LocalDate dataSolicitacao;
     
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'status' não pode ficar vazio")
     @Column(name = "status", nullable = false)
-    private String status;
+    private Status status;
     
     @NotBlank(message = "O campo motivacao não pode ficar vazio")
     @Size(max = 500, message = "O campo de motivação deve ser preenchido com no máximo 500 caracteres")
@@ -43,9 +49,10 @@ public class InteresseAdocao {
     @Column(name = "experiencia_previa", nullable = false)
     private Boolean experienciaPrevia;
     
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'tipoMoradia' não pode ficar vazio")
     @Column(name = "tipo_moradia", nullable = false)
-    private String tipoMoradia;
+    private TipoMoradia tipoMoradia;
     
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
@@ -76,13 +83,6 @@ public class InteresseAdocao {
         this.dataSolicitacao = dataSolicitacao;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getMotivacao() {
         return motivacao;
@@ -100,13 +100,6 @@ public class InteresseAdocao {
         this.experienciaPrevia = experienciaPrevia;
     }
 
-    public String getTipoMoradia() {
-        return tipoMoradia;
-    }
-
-    public void setTipoMoradia(String tipoMoradia) {
-        this.tipoMoradia = tipoMoradia;
-    }
 
     public Pessoa getPessoa() {
         return pessoa;
@@ -122,6 +115,22 @@ public class InteresseAdocao {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public TipoMoradia getTipoMoradia() {
+        return tipoMoradia;
+    }
+
+    public void setTipoMoradia(TipoMoradia tipoMoradia) {
+        this.tipoMoradia = tipoMoradia;
     }
 
 

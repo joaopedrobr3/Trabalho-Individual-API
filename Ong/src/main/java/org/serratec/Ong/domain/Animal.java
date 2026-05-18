@@ -2,10 +2,16 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
+import org.serratec.Ong.enummerated.Porte;
+import org.serratec.Ong.enummerated.Raca;
+import org.serratec.Ong.enummerated.Sexo;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,17 +30,24 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O campo 'nome' não pode ser vazio")
+    @NotBlank(message = "O campo 'nome' não pode ficar vazio")
     @Column(name = "nome", nullable = false)
     private String nome;
     
+    @Enumerated(EnumType.STRING)
+    @NotBlank(message = "O campo 'sexo' não pode ficar vazio")
+    @Column(name = "sexo", nullable = false)
+    private Sexo sexo;
+    
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'porte' não pode ficar vazio")
     @Column(name = "porte", nullable = false)
-    private String porte;
+    private Porte porte;
     
+    @Enumerated(EnumType.STRING)
     @NotBlank(message = "O campo 'raca' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD")
     @Column(name = "raca", nullable = false)
-    private String raca;
+    private Raca raca;
     
     
     @OneToMany(mappedBy = "animal")
@@ -60,26 +73,6 @@ public class Animal {
         this.id = id;
     }
 
-   
-
-    public String getPorte() {
-        return porte;
-    }
-
-    public void setPorte(String porte) {
-        this.porte = porte;
-    }
-
-    public String getRaca() {
-        return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-
-    
-
     public List<Caracteristica> getCaracteristica() {
         return caracteristica;
     }
@@ -104,7 +97,28 @@ public class Animal {
         this.nome = nome;
     }
 
-   
+    public Sexo getSexo() {
+        return sexo;
+    }
 
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setPorte(Porte porte) {
+        this.porte = porte;
+    }
+
+   public Porte getPorte() {
+        return porte;
+    }
+
+   public Raca getRaca() {
+    return raca;
+   }
+
+   public void setRaca(Raca raca) {
+    this.raca = raca;
+   }
      
 }
