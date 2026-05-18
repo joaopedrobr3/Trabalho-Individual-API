@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 
 public class InteresseAdocaoRequest {
     
-    @Past
+    @Past(message = "A data precisa estar no passado")
     @NotNull(message = "O campo 'dataSolicitacao' não pode ficar vazio")
     private LocalDate dataSolicitacao;
     

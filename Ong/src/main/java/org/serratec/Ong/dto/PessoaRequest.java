@@ -21,7 +21,7 @@ public class PessoaRequest {
     private String telefone;
 
     @NotBlank(message = "O campo 'cpf' não pode ficar vazio")
-    @CPF
+    @CPF(message = "Informe um CPF válido")
     @Size(max = 11, min = 11, message = "O CPF precisa ter 11 caracteres!")
     private String cpf;
 

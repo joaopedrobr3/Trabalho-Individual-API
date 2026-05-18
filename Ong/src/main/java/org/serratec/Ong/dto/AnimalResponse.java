@@ -6,6 +6,7 @@ public class AnimalResponse {
 
     private Long id;
     private String nome;
+    private String sexo;
     private String especie;
     private String porte;
     private String raca;
@@ -39,6 +40,12 @@ public class AnimalResponse {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public String getSexo() {
+        return sexo;
+    }
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
     
