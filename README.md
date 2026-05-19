@@ -147,6 +147,7 @@ Exemplo de body para POST:
   "cpf": "12345678901",
   "telefone": "2199999999",
   "email": "joao@email.com",
+  "dataNascimento" : "2003-07-26",
   "enderecoId": 1
 }
 ```
