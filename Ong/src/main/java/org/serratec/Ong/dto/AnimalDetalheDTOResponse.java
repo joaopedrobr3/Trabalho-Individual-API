@@ -10,9 +10,9 @@ public class AnimalDetalheDTOResponse extends AnimalDTOResponse {
     
     
    
-    public AnimalDetalheDTOResponse(Long id, String nome, String sexo, String porte, String raca,
+    public AnimalDetalheDTOResponse(Long id, String nome, String sexo, String porte, String especie,
             List<CaracteristicaDTOResponse> caracteristica, List<InteresseAdocaoDTOResponse> interesse) {
-        super(id, nome, sexo, porte, raca);
+        super(id, nome, sexo, porte, especie);
         this.caracteristica = caracteristica;
         this.interesse = interesse;
     }

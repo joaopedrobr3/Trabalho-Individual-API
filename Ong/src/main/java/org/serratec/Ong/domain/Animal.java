@@ -64,15 +64,20 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(Long id, String nome, Sexo sexo, Porte porte,  List<InteresseAdocao> interesse,
+   
+
+    public Animal(Long id, String nome, Sexo sexo, Porte porte, Especie especie, List<InteresseAdocao> interesse,
             List<Caracteristica> caracteristica) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.porte = porte;
+        this.especie = especie;
         this.interesse = interesse;
         this.caracteristica = caracteristica;
     }
+
+
 
     public Long getId() {
         return id;
@@ -121,6 +126,17 @@ public class Animal {
    public Porte getPorte() {
         return porte;
     }
+
+   public Especie getEspecie() {
+    return especie;
+   }
+
+   public void setEspecie(Especie especie) {
+    this.especie = especie;
+   }
+   
+   
+   
 
    
      

@@ -1,14 +1,17 @@
 package org.serratec.Ong.dto;
 
+
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({
+    "personalidade",
+    "saude"
+})
 public class CaracteristicaDTOResponse {
     
-    @JsonPropertyOrder({
-        "personalidade",
-        "saude"
-    })
-
+    
+    private Long id;
     private String personalidade;
     private String saude;
     
@@ -16,17 +19,18 @@ public class CaracteristicaDTOResponse {
     public CaracteristicaDTOResponse() {
     }
 
-    public CaracteristicaDTOResponse(String personalidade, String saude) {
+    
+    
+    
+    public CaracteristicaDTOResponse(Long id, String personalidade, String saude) {
+        this.id = id;
         this.personalidade = personalidade;
         this.saude = saude;
     }
-    
-    public String getPersonalidade() {
-        return personalidade;
-    }
-    public void setPersonalidade(String personalidade) {
-        this.personalidade = personalidade;
-    }
+
+
+
+
     public String getSaude() {
         return saude;
     }
@@ -34,5 +38,22 @@ public class CaracteristicaDTOResponse {
         this.saude = saude;
     }
 
+    public String getPersonalidade() {
+        return personalidade;
+    }
+
+    public void setPersonalidade(String personalidade) {
+        this.personalidade = personalidade;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
     
 }

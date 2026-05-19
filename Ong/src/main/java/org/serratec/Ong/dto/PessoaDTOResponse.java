@@ -1,5 +1,7 @@
 package org.serratec.Ong.dto;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class PessoaDTOResponse {
@@ -15,18 +17,26 @@ public class PessoaDTOResponse {
     private String nome;
     private String email;
     private String cidade;
+    private LocalDate dataNascimento;
     
     
     public PessoaDTOResponse() {
     }
 
     
-    public PessoaDTOResponse(Long id, String nome, String email, String cidade) {
+    
+
+
+    public PessoaDTOResponse(Long id, String nome, String email, String cidade, LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.cidade = cidade;
+        this.dataNascimento = dataNascimento;
     }
+
+
+
 
 
     public Long getId() {
@@ -54,7 +64,17 @@ public class PessoaDTOResponse {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-    
 
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+    
+   
     
 }

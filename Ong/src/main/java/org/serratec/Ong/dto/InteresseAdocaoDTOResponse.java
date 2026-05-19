@@ -4,18 +4,16 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({
+    "id",
+    "dataSolicitacao",
+    "motivacao",
+    "tipoMoradia"
+})
 public class InteresseAdocaoDTOResponse {
-    @JsonPropertyOrder({
-        "id",
-        "dataSolicitacao",
-        "status",
-        "motivacao",
-        "tipoMoradia"
-    })
     
     private Long id;
     private LocalDate dataSolicitacao;
-    private String status;
     private String motivacao;
     private String tipoMoradia;
     
@@ -23,11 +21,10 @@ public class InteresseAdocaoDTOResponse {
     public InteresseAdocaoDTOResponse() {
     }
 
-    public InteresseAdocaoDTOResponse(Long id, LocalDate dataSolicitacao, String status, String motivacao,
+    public InteresseAdocaoDTOResponse(Long id, LocalDate dataSolicitacao,  String motivacao,
             String tipoMoradia) {
         this.id = id;
         this.dataSolicitacao = dataSolicitacao;
-        this.status = status;
         this.motivacao = motivacao;
         this.tipoMoradia = tipoMoradia;
     }
@@ -38,12 +35,7 @@ public class InteresseAdocaoDTOResponse {
     public void setDataSolicitacao(LocalDate dataSolicitacao) {
         this.dataSolicitacao = dataSolicitacao;
     }
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
+   
     public String getMotivacao() {
         return motivacao;
     }

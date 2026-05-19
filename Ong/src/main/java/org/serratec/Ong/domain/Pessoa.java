@@ -2,10 +2,10 @@ package org.serratec.Ong.domain;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 
-
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
@@ -32,16 +32,19 @@ public class Pessoa {
     private String nome;
     
     
-    @Column(name = "telefone", nullable = false, length = 10)
+    @Column(name = "telefone", nullable = false, length = 11)
     private String telefone;
     
     
-    @Column(name = "cpf", nullable = false, length = 11)
+    @Column(name = "cpf", nullable = false, length = 11, unique = true)
     private String cpf;
     
     
     @Column(name = "email")
     private String email;
+    
+    @Column(name = "dataNascimento")
+    private LocalDate dataNascimento;
     
     @OneToMany(mappedBy = "pessoa")
     @JsonManagedReference ("pessoa-interesse")
@@ -49,7 +52,7 @@ public class Pessoa {
     
     @ManyToOne
     @JoinColumn(name = "id_endereco", nullable = false)  
-    @JsonManagedReference("pessoa-endereco")
+    @JsonBackReference("pessoa-endereco")
     private Endereco endereco;
     
     

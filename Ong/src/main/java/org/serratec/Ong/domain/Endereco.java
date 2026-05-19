@@ -2,8 +2,8 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +34,7 @@ public class Endereco {
     private Integer numero;
     
     @OneToMany(mappedBy = "endereco")
-    @JsonBackReference("pessoa-endereco")
+    @JsonManagedReference("pessoa-endereco")
     private List<Pessoa> pessoa;
     
     

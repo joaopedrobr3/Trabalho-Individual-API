@@ -3,7 +3,7 @@ package org.serratec.Ong.domain;
 
 import java.time.LocalDate;
 
-import org.serratec.Ong.enummerated.Status;
+
 import org.serratec.Ong.enummerated.TipoMoradia;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -32,17 +32,9 @@ public class InteresseAdocao {
     @Column(name = "data_solicitacao", nullable = false)
     private LocalDate dataSolicitacao;
     
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private Status status;
-    
    
     @Column(name = "motivacao", nullable = false, length = 500)
     private String motivacao;
-    
-    
-    @Column(name = "experiencia_previa", nullable = false)
-    private Boolean experienciaPrevia;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_moradia", nullable = false)
@@ -64,13 +56,11 @@ public class InteresseAdocao {
     public InteresseAdocao() {
     }
 
-    public InteresseAdocao(Long id, LocalDate dataSolicitacao, Status status, String motivacao,
-            Boolean experienciaPrevia, TipoMoradia tipoMoradia, Pessoa pessoa, Animal animal) {
+    public InteresseAdocao(Long id, LocalDate dataSolicitacao, String motivacao,
+            TipoMoradia tipoMoradia, Pessoa pessoa, Animal animal) {
         this.id = id;
         this.dataSolicitacao = dataSolicitacao;
-        this.status = status;
         this.motivacao = motivacao;
-        this.experienciaPrevia = experienciaPrevia;
         this.tipoMoradia = tipoMoradia;
         this.pessoa = pessoa;
         this.animal = animal;
@@ -101,14 +91,6 @@ public class InteresseAdocao {
         this.motivacao = motivacao;
     }
 
-    public Boolean getExperienciaPrevia() {
-        return experienciaPrevia;
-    }
-
-    public void setExperienciaPrevia(Boolean experienciaPrevia) {
-        this.experienciaPrevia = experienciaPrevia;
-    }
-
 
     public Pessoa getPessoa() {
         return pessoa;
@@ -124,14 +106,6 @@ public class InteresseAdocao {
 
     public void setAnimal(Animal animal) {
         this.animal = animal;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public TipoMoradia getTipoMoradia() {

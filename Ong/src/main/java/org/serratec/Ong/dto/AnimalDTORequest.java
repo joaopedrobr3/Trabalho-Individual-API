@@ -21,9 +21,9 @@ public class AnimalDTORequest {
     @NotBlank(message = "O campo 'porte' não pode ficar vazio")
     private String porte;
 
-    @Schema(description = "Raça do Animal", example = "PASTOR_ALEMAO")
-    @NotBlank(message = "O campo 'raca' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD")
-    private String raca;
+    @Schema(description = "Especie do Animal", example = "CANINO")
+    @NotBlank(message = "O campo 'especie' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD")
+    private String especie;
 
     @Schema(description = "ID das caracteristicas do Animal")
     @NotNull(message = "O campo 'caracteristica' não pode ficar vazio")
@@ -37,12 +37,7 @@ public class AnimalDTORequest {
     public void setPorte(String porte) {
         this.porte = porte;
     }
-    public String getRaca() {
-        return raca;
-    }
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
+    
     public List<Long> getIdcaracteristica() {
         return idcaracteristica;
     }
@@ -60,6 +55,12 @@ public class AnimalDTORequest {
     }
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+    public String getEspecie() {
+        return especie;
+    }
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
     

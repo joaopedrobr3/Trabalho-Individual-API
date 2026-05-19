@@ -2,17 +2,17 @@ package org.serratec.Ong.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({
+   "cidade",
+   "rua",
+   "bairro",
+   "numero"
+
+})
 public class EnderecoDTOResponse {
     
-    @JsonPropertyOrder({
-       "cidade",
-       "rua",
-       "bairro",
-       "numero"
 
-    })
-
-
+    private Long id;
     private String cidade;
     private String rua;
     private String bairro;
@@ -23,7 +23,8 @@ public class EnderecoDTOResponse {
     public EnderecoDTOResponse() {
     }
 
-    public EnderecoDTOResponse(String cidade, String rua, String bairro, Integer numero) {
+    public EnderecoDTOResponse(String cidade, String rua, String bairro, Integer numero, Long id) {
+        this.id = id;
         this.cidade = cidade;
         this.rua = rua;
         this.bairro = bairro;
@@ -56,5 +57,14 @@ public class EnderecoDTOResponse {
         this.numero = numero;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
     
 }
