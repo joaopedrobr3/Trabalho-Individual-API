@@ -122,7 +122,7 @@ Exemplo de body para POST:
 ```json
 {
   "nome": "Rex",
-  "especie": "CACHORRO",
+  "especie": "CANINO",
   "porte": "GRANDE",
   "caracteristicasIds": [1, 2]
 }
