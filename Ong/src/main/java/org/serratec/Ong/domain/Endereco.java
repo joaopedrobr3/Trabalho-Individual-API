@@ -34,10 +34,23 @@ public class Endereco {
     private Integer numero;
     
     @OneToMany(mappedBy = "endereco")
-    @JsonBackReference
+    @JsonBackReference("pessoa-endereco")
     private List<Pessoa> pessoa;
-
     
+    
+    
+    public Endereco() {
+    }
+
+    public Endereco(Long id, String cidade, String rua, String bairro, Integer numero, List<Pessoa> pessoa) {
+        this.id = id;
+        this.cidade = cidade;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.numero = numero;
+        this.pessoa = pessoa;
+    }
+
     public String getCidade() {
         return cidade;
     }
@@ -76,6 +89,14 @@ public class Endereco {
 
     public void setPessoa(List<Pessoa> pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
    

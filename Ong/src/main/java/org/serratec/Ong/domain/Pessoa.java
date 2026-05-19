@@ -49,10 +49,24 @@ public class Pessoa {
     
     @ManyToOne
     @JoinColumn(name = "id_endereco", nullable = false)  
-    @JsonManagedReference
+    @JsonManagedReference("pessoa-endereco")
     private Endereco endereco;
     
     
+    public Pessoa() {
+    }
+
+    public Pessoa(Long id, String nome, String telefone, String cpf, String email, List<InteresseAdocao> interesse,
+            Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.email = email;
+        this.interesse = interesse;
+        this.endereco = endereco;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,8 +1,9 @@
 package org.serratec.Ong.domain;
 
-import java.io.ObjectInputFilter.Status;
+
 import java.time.LocalDate;
 
+import org.serratec.Ong.enummerated.Status;
 import org.serratec.Ong.enummerated.TipoMoradia;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -58,8 +59,23 @@ public class InteresseAdocao {
     private Animal animal;
     
     
-  
     
+    
+    public InteresseAdocao() {
+    }
+
+    public InteresseAdocao(Long id, LocalDate dataSolicitacao, Status status, String motivacao,
+            Boolean experienciaPrevia, TipoMoradia tipoMoradia, Pessoa pessoa, Animal animal) {
+        this.id = id;
+        this.dataSolicitacao = dataSolicitacao;
+        this.status = status;
+        this.motivacao = motivacao;
+        this.experienciaPrevia = experienciaPrevia;
+        this.tipoMoradia = tipoMoradia;
+        this.pessoa = pessoa;
+        this.animal = animal;
+    }
+
     public Long getId() {
         return id;
     }

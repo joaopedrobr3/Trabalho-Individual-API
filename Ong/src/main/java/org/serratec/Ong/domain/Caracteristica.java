@@ -38,10 +38,22 @@ public class Caracteristica {
     
     
     @ManyToMany(mappedBy = "caracteristica")
-    @JsonBackReference
+    @JsonBackReference("animal-caracteristica")
     private List<Animal> animal;
     
     
+    public Caracteristica() {
+    }
+    
+    
+    public Caracteristica(Long id, Personalidade personalidade, Saude saude, List<Animal> animal) {
+        this.id = id;
+        this.personalidade = personalidade;
+        this.saude = saude;
+        this.animal = animal;
+    }
+
+
     public Long getId() {
         return id;
     }

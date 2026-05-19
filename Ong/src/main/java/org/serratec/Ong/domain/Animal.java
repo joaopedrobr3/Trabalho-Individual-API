@@ -58,9 +58,23 @@ public class Animal {
     joinColumns = @JoinColumn(name = "id_animal"),
     inverseJoinColumns = @JoinColumn(name = "id_caracteristica")
     )
-    @JsonManagedReference
+    @JsonManagedReference("animal-caracteristica")
     private List<Caracteristica> caracteristica;
     
+    
+    public Animal() {
+    }
+
+    public Animal(Long id, String nome, Sexo sexo, Porte porte, Raca raca, List<InteresseAdocao> interesse,
+            List<Caracteristica> caracteristica) {
+        this.id = id;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.porte = porte;
+        this.raca = raca;
+        this.interesse = interesse;
+        this.caracteristica = caracteristica;
+    }
 
     public Long getId() {
         return id;
