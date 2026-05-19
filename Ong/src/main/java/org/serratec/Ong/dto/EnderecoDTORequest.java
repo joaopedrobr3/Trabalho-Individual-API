@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "Dados de endereço")
-public class EnderecoRequest {
+public class EnderecoDTORequest {
     
     @Schema(description = "Nome da cidade", example = "Petrópolis")
     @NotBlank(message = "O campo 'cidade' não pode ficar vazio")

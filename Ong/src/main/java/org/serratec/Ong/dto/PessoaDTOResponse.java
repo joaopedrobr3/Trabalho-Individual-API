@@ -1,12 +1,34 @@
 package org.serratec.Ong.dto;
 
-public class PessoaResponse {
-   
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+public class PessoaDTOResponse {
+    
+    @JsonPropertyOrder({
+        "id",
+        "nome",
+        "email",
+        "cidade"
+    })
+    
     private Long id;
     private String nome;
     private String email;
     private String cidade;
     
+    
+    public PessoaDTOResponse() {
+    }
+
+    
+    public PessoaDTOResponse(Long id, String nome, String email, String cidade) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.cidade = cidade;
+    }
+
+
     public Long getId() {
         return id;
     }

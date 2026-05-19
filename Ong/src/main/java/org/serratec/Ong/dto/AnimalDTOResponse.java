@@ -1,15 +1,36 @@
 package org.serratec.Ong.dto;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-public class AnimalResponse {
+public class AnimalDTOResponse {
     
+    @JsonPropertyOrder({
+        "id",
+        "nome",
+        "sexo",
+        "porte",
+        "raca"
 
+    })
+   
     private Long id;
     private String nome;
     private String sexo;
-    private String especie;
     private String porte;
     private String raca;
+
+    
+    
+    public AnimalDTOResponse() {
+    }
+
+    public AnimalDTOResponse(Long id, String nome, String sexo, String porte, String raca) {
+        this.id = id;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.porte = porte;
+        this.raca = raca;
+    }
     
     public Long getId() {
         return id;
@@ -17,12 +38,7 @@ public class AnimalResponse {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getEspecie() {
-        return especie;
-    }
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
+    
     public String getPorte() {
         return porte;
     }

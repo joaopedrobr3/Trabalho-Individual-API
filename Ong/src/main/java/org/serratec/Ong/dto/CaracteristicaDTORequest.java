@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 
 @Schema(description = "Caracteristicas de um Animal")
-public class CaracteristicaRequest {
+public class CaracteristicaDTORequest {
     
 
     @Schema(description = "Personalidade do animal", example = "AMIGAVEL")

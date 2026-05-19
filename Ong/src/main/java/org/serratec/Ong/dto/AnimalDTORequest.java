@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Schema(description = "Dados para cadastro de um animal")
-public class AnimalRequest {
+public class AnimalDTORequest {
     
     @Schema(description = "Nome do animal", example = "Rex")
     @NotBlank(message = "O campo 'nome' não pode ficar vazio")
@@ -25,9 +25,11 @@ public class AnimalRequest {
     @NotBlank(message = "O campo 'raca' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD")
     private String raca;
 
-    @Schema(description = "ID das caracteristicas do Animal", example = "1")
+    @Schema(description = "ID das caracteristicas do Animal")
     @NotNull(message = "O campo 'caracteristica' não pode ficar vazio")
     private List<Long> idcaracteristica;
+    
+    
     
     public String getPorte() {
         return porte;
@@ -52,6 +54,12 @@ public class AnimalRequest {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public String getSexo() {
+        return sexo;
+    }
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     

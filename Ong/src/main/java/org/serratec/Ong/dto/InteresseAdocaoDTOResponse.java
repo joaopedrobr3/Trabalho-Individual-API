@@ -2,7 +2,16 @@ package org.serratec.Ong.dto;
 
 import java.time.LocalDate;
 
-public class InteresseAdocaoResponse {
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+public class InteresseAdocaoDTOResponse {
+    @JsonPropertyOrder({
+        "id",
+        "dataSolicitacao",
+        "status",
+        "motivacao",
+        "tipoMoradia"
+    })
     
     private Long id;
     private LocalDate dataSolicitacao;
@@ -11,6 +20,18 @@ public class InteresseAdocaoResponse {
     private String tipoMoradia;
     
     
+    public InteresseAdocaoDTOResponse() {
+    }
+
+    public InteresseAdocaoDTOResponse(Long id, LocalDate dataSolicitacao, String status, String motivacao,
+            String tipoMoradia) {
+        this.id = id;
+        this.dataSolicitacao = dataSolicitacao;
+        this.status = status;
+        this.motivacao = motivacao;
+        this.tipoMoradia = tipoMoradia;
+    }
+
     public LocalDate getDataSolicitacao() {
         return dataSolicitacao;
     }

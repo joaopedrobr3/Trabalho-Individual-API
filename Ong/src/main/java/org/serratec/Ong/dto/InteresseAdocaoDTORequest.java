@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "Dados para cadastrar uma solicitação de adoção")
-public class InteresseAdocaoRequest {
+public class InteresseAdocaoDTORequest {
     
     @Schema(description = "Data da solicitação de interesse")
     @Past(message = "A data precisa estar no passado")

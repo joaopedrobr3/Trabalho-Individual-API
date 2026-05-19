@@ -1,10 +1,25 @@
 package org.serratec.Ong.dto;
 
-public class CaracteristicaResponse {
-     
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+public class CaracteristicaDTOResponse {
+    
+    @JsonPropertyOrder({
+        "personalidade",
+        "saude"
+    })
+
     private String personalidade;
     private String saude;
     
+    
+    public CaracteristicaDTOResponse() {
+    }
+
+    public CaracteristicaDTOResponse(String personalidade, String saude) {
+        this.personalidade = personalidade;
+        this.saude = saude;
+    }
     
     public String getPersonalidade() {
         return personalidade;

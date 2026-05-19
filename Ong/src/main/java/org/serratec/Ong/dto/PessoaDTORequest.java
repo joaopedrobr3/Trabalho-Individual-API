@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Schema(description = "Dados para cadastrar uma pessoa")
-public class PessoaRequest {
+public class PessoaDTORequest {
      
     
     @Schema(description = "Nome da pessoa", example = "João")
