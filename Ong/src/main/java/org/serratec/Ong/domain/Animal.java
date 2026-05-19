@@ -2,8 +2,8 @@ package org.serratec.Ong.domain;
 
 import java.util.List;
 
+import org.serratec.Ong.enummerated.Especie;
 import org.serratec.Ong.enummerated.Porte;
-import org.serratec.Ong.enummerated.Raca;
 import org.serratec.Ong.enummerated.Sexo;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -30,7 +30,6 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    
     @Column(name = "nome", nullable = false)
     private String nome;
     
@@ -43,8 +42,8 @@ public class Animal {
     private Porte porte;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "raca", nullable = false)
-    private Raca raca;
+    @Column(name = "especie", nullable = false)
+    private Especie especie;
     
     
     @OneToMany(mappedBy = "animal")
@@ -65,13 +64,12 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(Long id, String nome, Sexo sexo, Porte porte, Raca raca, List<InteresseAdocao> interesse,
+    public Animal(Long id, String nome, Sexo sexo, Porte porte,  List<InteresseAdocao> interesse,
             List<Caracteristica> caracteristica) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.porte = porte;
-        this.raca = raca;
         this.interesse = interesse;
         this.caracteristica = caracteristica;
     }
@@ -124,12 +122,6 @@ public class Animal {
         return porte;
     }
 
-   public Raca getRaca() {
-    return raca;
-   }
-
-   public void setRaca(Raca raca) {
-    this.raca = raca;
-   }
+   
      
 }
