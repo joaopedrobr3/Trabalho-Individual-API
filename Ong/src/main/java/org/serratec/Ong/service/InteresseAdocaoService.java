@@ -71,7 +71,7 @@ public class InteresseAdocaoService {
     @Transactional
     public InteresseAdocaoDTOResponse atualizar(Long id, InteresseAdocaoDTORequest request) {
         InteresseAdocao ia = interesseAdocaoRepository.findById(id)
-            .orElseThrow(() -> new RecursoNaoEncontradoException("Interesse não encontrado com id: " + id));
+            .orElseThrow(() -> new RecursoNaoEncontradoException("Interesse não encontrado com ID digitado"));
         Pessoa pessoa = pessoaRepository.findById(request.getIdPessoa())
             .orElseThrow(() -> new RecursoNaoEncontradoException("Pessoa não encontrada com ID digitado"));
         Animal animal = animalRepository.findById(request.getIdAnimal())
