@@ -43,7 +43,10 @@ public class EnderecoService {
         endereco.setBairro(request.getBairro());
         endereco.setRua(request.getRua());  
         endereco.setNumero(request.getNumero()); 
+        enderecoRepository.save(endereco);
         return toResponse(endereco);
+
+
         
     }
 

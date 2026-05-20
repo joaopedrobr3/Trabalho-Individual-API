@@ -6,6 +6,8 @@ import org.serratec.Ong.domain.Animal;
 import org.serratec.Ong.domain.Caracteristica;
 import org.serratec.Ong.dto.AnimalDTORequest;
 import org.serratec.Ong.dto.AnimalDTOResponse;
+import org.serratec.Ong.dto.AnimalDetalheDTOResponse;
+import org.serratec.Ong.dto.CaracteristicaDTOResponse;
 import org.serratec.Ong.enummerated.Especie;
 import org.serratec.Ong.enummerated.Porte;
 import org.serratec.Ong.enummerated.Sexo;
@@ -34,11 +36,12 @@ public class AnimalService {
     }
     
     @Transactional(readOnly = true)
-    public AnimalDTOResponse buscarPorId(Long id){
-        Animal animal = animalRepository.findById(id)
+    public AnimalDetalheDTOResponse buscarPorId(Long id){
+    Animal animal = animalRepository.findById(id)
         .orElseThrow(() -> new RecursoNaoEncontradoException("Animal com o ID digitado não encontrado"));
-       return toResponse(animal);
-    }
+        
+    return toDetalheResponse(animal);
+   }
     
     @Transactional
     public AnimalDTOResponse inserir(AnimalDTORequest request){
@@ -50,6 +53,8 @@ public class AnimalService {
         List<Caracteristica> caracteristicas = caracteristicaRepository.findAllById(request.getIdcaracteristica());
         animal.setCaracteristica(caracteristicas);
         animalRepository.save(animal);
+
+
         return toResponse(animal);
         
     }
@@ -65,6 +70,8 @@ public class AnimalService {
         List<Caracteristica> caracteristicas = caracteristicaRepository.findAllById(request.getIdcaracteristica());
         animal.setCaracteristica(caracteristicas);
         animalRepository.save(animal);
+
+
         return toResponse(animal); 
     } 
     
@@ -74,12 +81,33 @@ public class AnimalService {
         animalRepository.delete(animal);
     }
     
+    
     private AnimalDTOResponse toResponse(Animal animal) {
-        AnimalDTOResponse response = new AnimalDTOResponse();
-        response.setId(animal.getId());
-        response.setNome(animal.getNome());
-        response.setSexo(animal.getSexo().name());
-        response.setPorte(animal.getPorte().name());
-        return response;
-    }
+    AnimalDTOResponse response = new AnimalDTOResponse();
+    response.setId(animal.getId());
+    response.setNome(animal.getNome());
+    response.setSexo(animal.getSexo().name());
+    response.setPorte(animal.getPorte().name());
+    response.setEspecie(animal.getEspecie().name()); 
+    return response;
+}
+
+     private AnimalDetalheDTOResponse toDetalheResponse(Animal animal) {
+    AnimalDetalheDTOResponse response = new AnimalDetalheDTOResponse();
+    response.setId(animal.getId());
+    response.setNome(animal.getNome());
+    response.setSexo(animal.getSexo().name());
+    response.setPorte(animal.getPorte().name());
+    response.setEspecie(animal.getEspecie().name());
+
+    List<CaracteristicaDTOResponse> caracteristicas = animal.getCaracteristica()
+        .stream()
+        .map(c -> new CaracteristicaDTOResponse(c.getId(), c.getPersonalidade().name(), c.getSaude().name()))
+        .toList();
+    response.setCaracteristicas(caracteristicas);
+
+    
+
+    return response;
+}
 }  
