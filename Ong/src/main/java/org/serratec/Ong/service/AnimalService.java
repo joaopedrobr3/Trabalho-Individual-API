@@ -103,10 +103,17 @@ public class AnimalService {
     response.setPorte(animal.getPorte().name());
     response.setEspecie(animal.getEspecie().name());
 
-    List<CaracteristicaDTOResponse> caracteristicas = animal.getCaracteristica()
-        .stream()
-        .map(c -> new CaracteristicaDTOResponse(c.getId(), c.getPersonalidade().name(), c.getSaude().name()))
-        .toList();
+   List<CaracteristicaDTOResponse> caracteristicas = animal.getCaracteristica()
+    .stream()
+    .map(c -> {
+        CaracteristicaDTOResponse caracteristica = new CaracteristicaDTOResponse();
+        caracteristica.setId(c.getId());
+        caracteristica.setPersonalidade(c.getPersonalidade().name());
+        caracteristica.setSaude(c.getSaude().name());
+        return caracteristica;
+    })
+    .toList();
+    
     response.setCaracteristicas(caracteristicas);
 
      List<InteresseAdocaoDTOResponse> interesses = animal.getInteresse()

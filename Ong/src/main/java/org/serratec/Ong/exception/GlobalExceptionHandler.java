@@ -37,4 +37,5 @@ public Map<String, String> handleValidationErrors(MethodArgumentNotValidExceptio
         .forEach(erro -> erros.put(erro.getField(), erro.getDefaultMessage()));
     return erros;
 }
+
 }

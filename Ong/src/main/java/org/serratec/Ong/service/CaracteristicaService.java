@@ -80,7 +80,6 @@ public class CaracteristicaService {
     response.setId(caracteristica.getId());
     response.setPersonalidade(caracteristica.getPersonalidade().name());
     response.setSaude(caracteristica.getSaude().name());
-
     List<AnimalDTOResponse> animais = caracteristica.getAnimal()
         .stream()
         .map(animal -> new AnimalDTOResponse(
