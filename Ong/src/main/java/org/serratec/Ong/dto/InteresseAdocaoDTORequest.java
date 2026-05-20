@@ -23,6 +23,10 @@ public class InteresseAdocaoDTORequest {
     @NotBlank(message = "O campo 'tipoMoradia' não pode ficar vazio")
     private String tipoMoradia;
     
+    @Schema(description = "Status da solicitação", example = "PENDENTE")
+    @NotBlank(message = "O campo 'status' não pode ficar vazio")
+    private String status;
+    
     @Schema(description = "ID de cadastro da pessoa interessada", example = "1")
     @NotNull(message = "O campo 'idPessoa' não pode ficar vazio")
     private Long idPessoa;
@@ -71,6 +75,7 @@ public class InteresseAdocaoDTORequest {
     public void setIdAnimal(Long idAnimal) {
         this.idAnimal = idAnimal;
     }
-
+    
+    
     
 }

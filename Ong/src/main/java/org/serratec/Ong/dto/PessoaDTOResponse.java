@@ -9,12 +9,14 @@ public class PessoaDTOResponse {
     @JsonPropertyOrder({
         "id",
         "nome",
+        "telefone",
         "email",
         "cidade"
     })
     
     private Long id;
     private String nome;
+    private String telefone;
     private String email;
     private String cidade;
     private LocalDate dataNascimento;
@@ -27,13 +29,27 @@ public class PessoaDTOResponse {
     
 
 
-    public PessoaDTOResponse(Long id, String nome, String email, String cidade, LocalDate dataNascimento) {
+    
+
+
+
+
+
+    public PessoaDTOResponse(Long id, String nome, String telefone, String email, String cidade,
+            LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
+        this.telefone = telefone;
         this.email = email;
         this.cidade = cidade;
         this.dataNascimento = dataNascimento;
     }
+
+
+
+
+
+
 
 
 
@@ -73,6 +89,34 @@ public class PessoaDTOResponse {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     
    
