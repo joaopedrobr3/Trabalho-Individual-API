@@ -33,7 +33,7 @@ public class CaracteristicaService {
     @Transactional(readOnly = true)
     public CaracteristicaDetalheDTOResponse buscarPorId(Long id){
     Caracteristica caracteristica = caracteristicaRepository.findById(id)
-        .orElseThrow(() -> new RecursoNaoEncontradoException("A caracteristica com o ID digitado não encontrado"));
+        .orElseThrow(() -> new RecursoNaoEncontradoException("Caracteristica com o ID digitado não encontrada"));
         
     return toDetalheResponse(caracteristica);
     }
@@ -54,7 +54,7 @@ public class CaracteristicaService {
             .orElseThrow(() -> new RecursoNaoEncontradoException("Caracteristica não encontrada com o ID digitado"));
         caracteristica.setPersonalidade(Personalidade.valueOf(request.getPersonalidade().trim().toUpperCase()));
         caracteristica.setSaude(Saude.valueOf(request.getSaude().trim().toUpperCase()));
-
+        caracteristicaRepository.save(caracteristica);
 
         return toResponse(caracteristica); 
     }
@@ -68,8 +68,8 @@ public class CaracteristicaService {
     private CaracteristicaDTOResponse toResponse(Caracteristica caracteristica) {
     CaracteristicaDTOResponse response = new CaracteristicaDTOResponse();
     response.setId(caracteristica.getId());
-    response.setPersonalidade(caracteristica.getPersonalidade().name()); 
-    response.setSaude(caracteristica.getSaude().name());
+    response.setPersonalidade(caracteristica.getPersonalidade().name().trim().toUpperCase()); 
+    response.setSaude(caracteristica.getSaude().name().trim().toUpperCase());
     
     
     return response;
@@ -78,17 +78,17 @@ public class CaracteristicaService {
     private CaracteristicaDetalheDTOResponse toDetalheResponse(Caracteristica caracteristica) {
     CaracteristicaDetalheDTOResponse response = new CaracteristicaDetalheDTOResponse();
     response.setId(caracteristica.getId());
-    response.setPersonalidade(caracteristica.getPersonalidade().name());
-    response.setSaude(caracteristica.getSaude().name());
+    response.setPersonalidade(caracteristica.getPersonalidade().name().trim().toUpperCase());
+    response.setSaude(caracteristica.getSaude().name().trim().toUpperCase());
 
     List<AnimalDTOResponse> animais = caracteristica.getAnimal()
         .stream()
         .map(animal -> new AnimalDTOResponse(
             animal.getId(),
             animal.getNome(),
-            animal.getSexo().name(),    
-            animal.getPorte().name(),   
-            animal.getEspecie().name()  
+            animal.getSexo().name().trim().toUpperCase(),    
+            animal.getPorte().name().trim().toUpperCase(),   
+            animal.getEspecie().name().trim().toUpperCase()  
         ))
         .toList();
 

@@ -45,10 +45,28 @@ public class EnderecoService {
         endereco.setNumero(request.getNumero()); 
         enderecoRepository.save(endereco);
         return toResponse(endereco);
-
-
-        
     }
+    
+    @Transactional
+    public EnderecoDTOResponse atualizar(Long id, EnderecoDTORequest request){
+        Endereco endereco = enderecoRepository.findById(id)
+            .orElseThrow(() -> new RecursoNaoEncontradoException("Endereco não encontrado com o ID digitado"));
+        endereco.setCidade(request.getCidade()); 
+        endereco.setBairro(request.getBairro());
+        endereco.setRua(request.getRua());  
+        endereco.setNumero(request.getNumero()); 
+        enderecoRepository.save(endereco);
+
+
+        return toResponse(endereco); 
+    }
+
+    public void deletar(Long id) {
+        Endereco endereco = enderecoRepository.findById(id)
+            .orElseThrow(() -> new RecursoNaoEncontradoException("Endereco não encontrado com o ID digitado"));
+        enderecoRepository.delete(endereco);
+    }
+
 
     
 
