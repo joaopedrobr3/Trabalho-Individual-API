@@ -143,7 +143,7 @@ GRANDE
 ```text
 CANINO
 FELINO
-OUTROS
+OUTRO
 ```
 
 ---
