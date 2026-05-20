@@ -43,31 +43,30 @@ public class AnimalController {
     @Operation(summary = "Busca animal por ID", description = "Retorna os detalhes de um animal pelo ID")
     @ApiResponses(value = {
     @ApiResponse(responseCode = "200", description = "Animal encontrado", content = @Content),
-    @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content),
-    @ApiResponse(responseCode = "409", description = "Recurso já cadastrado no sistema", content = @Content)
+    @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content)
     })
     public ResponseEntity<AnimalDTOResponse> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(animalService.buscarPorId(id));
     }
     
+    @PostMapping
+    @Operation(summary = "Cadastra um animal", description = "Cria um novo animal no sistema")
     @ApiResponses(value = {
     @ApiResponse(responseCode = "201", description = "Animal cadastrado com sucesso", content = @Content),
     @ApiResponse(responseCode = "400", description = "Dados inválidos ou campos obrigatórios vazios", content = @Content),
     @ApiResponse(responseCode = "409", description = "Animal já cadastrado no sistema", content = @Content)
 })
-    @PostMapping
-    @Operation(summary = "Cadastra um animal", description = "Cria um novo animal no sistema")
     public ResponseEntity<AnimalDTOResponse> inserir(@RequestBody @Valid AnimalDTORequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.inserir(request));
     }
     
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualiza um animal", description = "Atualiza os dados de um animal existente")
     @ApiResponses(value = {
     @ApiResponse(responseCode = "200", description = "Animal atualizado com sucesso", content = @Content),
     @ApiResponse(responseCode = "400", description = "Dados inválidos ou campos obrigatórios vazios", content = @Content),
     @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content)
 })
-    @PutMapping("/{id}")
-    @Operation(summary = "Atualiza um animal", description = "Atualiza os dados de um animal existente")
     public ResponseEntity<AnimalDTOResponse> atualizar(@PathVariable Long id, @RequestBody @Valid AnimalDTORequest request) {
         return ResponseEntity.ok(animalService.atualizar(id, request));
     }
