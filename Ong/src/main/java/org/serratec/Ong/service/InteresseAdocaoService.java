@@ -100,30 +100,36 @@ public class InteresseAdocaoService {
     response.setId(interesseAdocao.getId());
     response.setDataSolicitacao(interesseAdocao.getDataSolicitacao());
     response.setMotivacao(interesseAdocao.getMotivacao());
+    response.setStatus(interesseAdocao.getStatus().name());
     response.setTipoMoradia(interesseAdocao.getTipoMoradia().name()); 
     return response;
 }
 
     private InteresseAdocaoDetalheDTOResponse toDetalheResponse(InteresseAdocao interesse) {
-        InteresseAdocaoDetalheDTOResponse response = new InteresseAdocaoDetalheDTOResponse();
-        response.setId(interesse.getId());
-        response.setDataSolicitacao(interesse.getDataSolicitacao());
-        response.setMotivacao(interesse.getMotivacao());
-        response.setTipoMoradia(interesse.getTipoMoradia().name().trim().toUpperCase());
 
-        PessoaDTOResponse pessoaResponse = new PessoaDTOResponse();
-        pessoaResponse.setId(interesse.getPessoa().getId());
-        pessoaResponse.setNome(interesse.getPessoa().getNome());
-        pessoaResponse.setEmail(interesse.getPessoa().getEmail());
-        
+    InteresseAdocaoDetalheDTOResponse response = new InteresseAdocaoDetalheDTOResponse();
 
-        AnimalDTOResponse animalResponse = new AnimalDTOResponse();
-        animalResponse.setId(interesse.getAnimal().getId());
-        animalResponse.setNome(interesse.getAnimal().getNome());
-        animalResponse.setEspecie(interesse.getAnimal().getEspecie().name().trim().toUpperCase());
-        response.setAnimal(animalResponse);
+    response.setId(interesse.getId());
+    response.setDataSolicitacao(interesse.getDataSolicitacao());
+    response.setMotivacao(interesse.getMotivacao());
+    response.setStatus( interesse.getStatus().name().trim().toUpperCase());
+    response.setTipoMoradia(interesse.getTipoMoradia().name().trim().toUpperCase());
 
-        return response;
-    }
+    PessoaDTOResponse pessoaResponse = new PessoaDTOResponse();
+    pessoaResponse.setId(interesse.getPessoa().getId());
+    pessoaResponse.setNome(interesse.getPessoa().getNome());
+    pessoaResponse.setEmail(interesse.getPessoa().getEmail());
+
+    response.setPessoa(pessoaResponse);
+
+    AnimalDTOResponse animalResponse = new AnimalDTOResponse();
+    animalResponse.setId(interesse.getAnimal().getId());
+    animalResponse.setNome(interesse.getAnimal().getNome());
+    animalResponse.setEspecie(interesse.getAnimal().getEspecie().name().trim().toUpperCase());
+
+    response.setAnimal(animalResponse);
+
+    return response;
+}
 
 }
