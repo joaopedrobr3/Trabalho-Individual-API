@@ -116,7 +116,7 @@ http://localhost:8080/swagger-ui.html
 ## 🧩 Enums Disponíveis
 
 A API utiliza enums para padronizar valores fixos em algumas entidades.
-
+(Podem ser digitados com letras minúsculas)
 ---
 
 ### 🐾 Sexo (Animal)
