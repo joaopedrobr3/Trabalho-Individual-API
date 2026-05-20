@@ -126,6 +126,14 @@ public class Pessoa {
         this.interesse = interesse;
     }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
    
 
     
