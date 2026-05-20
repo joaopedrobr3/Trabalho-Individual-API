@@ -78,17 +78,17 @@ public class CaracteristicaService {
     private CaracteristicaDetalheDTOResponse toDetalheResponse(Caracteristica caracteristica) {
     CaracteristicaDetalheDTOResponse response = new CaracteristicaDetalheDTOResponse();
     response.setId(caracteristica.getId());
-    response.setPersonalidade(caracteristica.getPersonalidade().name().trim().toUpperCase());
-    response.setSaude(caracteristica.getSaude().name().trim().toUpperCase());
+    response.setPersonalidade(caracteristica.getPersonalidade().name());
+    response.setSaude(caracteristica.getSaude().name());
 
     List<AnimalDTOResponse> animais = caracteristica.getAnimal()
         .stream()
         .map(animal -> new AnimalDTOResponse(
             animal.getId(),
             animal.getNome(),
-            animal.getSexo().name().trim().toUpperCase(),    
-            animal.getPorte().name().trim().toUpperCase(),   
-            animal.getEspecie().name().trim().toUpperCase()  
+            animal.getSexo().name(),    
+            animal.getPorte().name(),   
+            animal.getEspecie().name()  
         ))
         .toList();
 

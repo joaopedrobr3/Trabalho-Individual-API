@@ -12,5 +12,7 @@ public interface PessoaRepository extends JpaRepository <Pessoa, Long> {
     Boolean existsByEmail(String email);
     
     Boolean existsBy(Endereco endereco);
+
+    Boolean existsByTelefone(String telefone);
     
 }

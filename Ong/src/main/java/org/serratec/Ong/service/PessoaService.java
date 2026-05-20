@@ -49,6 +49,16 @@ public PessoaDTOResponse inserir(PessoaDTORequest request) {
     if (pessoaRepository.existsByCpf(request.getCpf())) {
         throw new RecursoRepetidoException("CPF já cadastrado");
     }
+    if (pessoaRepository.existsByEmail(request.getEmail())) {
+        throw new RecursoRepetidoException("Email já cadastrado");
+    }
+    if (pessoaRepository.existsByTelefone(request.getTelefone())) {
+        throw new RecursoRepetidoException("Telefone já cadastrado");
+    }
+    
+
+
+
     
     Endereco endereco = enderecoRepository.findById(request.getIdEndereco())
         .orElseThrow(() -> new RecursoNaoEncontradoException("Endereço não encontrado"));

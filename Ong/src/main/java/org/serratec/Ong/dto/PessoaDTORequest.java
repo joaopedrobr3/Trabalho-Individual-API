@@ -2,7 +2,7 @@ package org.serratec.Ong.dto;
 
 import java.time.LocalDate;
 
-import org.hibernate.validator.constraints.br.CPF;
+
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -27,7 +27,6 @@ public class PessoaDTORequest {
     
     @Schema(description = "CPF da pessoa")
     @NotBlank(message = "O campo 'cpf' não pode ficar vazio")
-    @CPF(message = "Informe um CPF válido")
     @Size(max = 11, min = 11, message = "O CPF precisa ter 11 caracteres!")
     private String cpf;
     
