@@ -1,6 +1,6 @@
 package org.serratec.Ong.dto;
 
-import java.time.LocalDate;
+
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -10,9 +10,7 @@ import jakarta.validation.constraints.Size;
 @Schema(description = "Dados para cadastrar uma solicitação de adoção")
 public class InteresseAdocaoDTORequest {
     
-    @Schema(description = "Data da solicitação de interesse")
-    @NotNull(message = "O campo 'dataSolicitacao' não pode ficar vazio")
-    private LocalDate dataSolicitacao;
+ 
     
     @Schema(description = "Motivação da adoção", example = "Presente para o filho")
     @NotBlank(message = "O campo motivacao não pode ficar vazio")
@@ -23,10 +21,6 @@ public class InteresseAdocaoDTORequest {
     @NotBlank(message = "O campo 'tipoMoradia' não pode ficar vazio")
     private String tipoMoradia;
     
-    @Schema(description = "Status da solicitação", example = "PENDENTE")
-    @NotBlank(message = "O campo 'status' não pode ficar vazio")
-    private String status;
-    
     @Schema(description = "ID de cadastro da pessoa interessada", example = "1")
     @NotNull(message = "O campo 'idPessoa' não pode ficar vazio")
     private Long idPessoa;
@@ -36,13 +30,7 @@ public class InteresseAdocaoDTORequest {
     private Long idAnimal;
     
     
-    public LocalDate getDataSolicitacao() {
-        return dataSolicitacao;
-    }
-
-    public void setDataSolicitacao(LocalDate dataSolicitacao) {
-        this.dataSolicitacao = dataSolicitacao;
-    }
+    
 
     public String getMotivacao() {
         return motivacao;
@@ -75,6 +63,8 @@ public class InteresseAdocaoDTORequest {
     public void setIdAnimal(Long idAnimal) {
         this.idAnimal = idAnimal;
     }
+
+    
     
     
     

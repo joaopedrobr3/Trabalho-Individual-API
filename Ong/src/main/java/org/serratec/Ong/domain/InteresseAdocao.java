@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.serratec.Ong.enummerated.TipoMoradia;
-import org.serratec.Ong.enummerated.Status;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -31,7 +31,7 @@ public class InteresseAdocao {
     
     
     @Column(name = "data_solicitacao", nullable = false)
-    private LocalDate dataSolicitacao;
+    private LocalDate dataSolicitacao = LocalDate.now();
     
    
     @Column(name = "motivacao", nullable = false, length = 500)
@@ -41,10 +41,7 @@ public class InteresseAdocao {
     @Column(name = "tipo_moradia", nullable = false)
     private TipoMoradia tipoMoradia;
     
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private Status status;
-    
+   
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
     @JsonBackReference ("pessoa-interesse")
@@ -63,13 +60,12 @@ public class InteresseAdocao {
 
    
 
-    public InteresseAdocao(Long id, LocalDate dataSolicitacao, String motivacao, TipoMoradia tipoMoradia, Status status,
+    public InteresseAdocao(Long id, LocalDate dataSolicitacao, String motivacao, TipoMoradia tipoMoradia, 
             Pessoa pessoa, Animal animal) {
         this.id = id;
         this.dataSolicitacao = dataSolicitacao;
         this.motivacao = motivacao;
         this.tipoMoradia = tipoMoradia;
-        this.status = status;
         this.pessoa = pessoa;
         this.animal = animal;
     }
@@ -128,16 +124,7 @@ public class InteresseAdocao {
 
 
 
-    public Status getStatus() {
-        return status;
-    }
-
-
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
+   
 
 
     

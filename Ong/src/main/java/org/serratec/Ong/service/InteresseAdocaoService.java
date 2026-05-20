@@ -59,7 +59,6 @@ public class InteresseAdocaoService {
         }
 
         InteresseAdocao ia = new InteresseAdocao();
-        ia.setDataSolicitacao(request.getDataSolicitacao());
         ia.setMotivacao(request.getMotivacao());
         ia.setTipoMoradia(TipoMoradia.valueOf(request.getTipoMoradia().trim().toUpperCase()));
         ia.setPessoa(pessoa);
@@ -78,7 +77,7 @@ public class InteresseAdocaoService {
         Animal animal = animalRepository.findById(request.getIdAnimal())
             .orElseThrow(() -> new RecursoNaoEncontradoException("Animal não encontrado com ID digitado"));
 
-        ia.setDataSolicitacao(request.getDataSolicitacao());
+        
         ia.setMotivacao(request.getMotivacao());
         ia.setTipoMoradia(TipoMoradia.valueOf(request.getTipoMoradia().trim().toUpperCase()));
         ia.setPessoa(pessoa);
@@ -100,8 +99,8 @@ public class InteresseAdocaoService {
     response.setId(interesseAdocao.getId());
     response.setDataSolicitacao(interesseAdocao.getDataSolicitacao());
     response.setMotivacao(interesseAdocao.getMotivacao());
-    response.setStatus(interesseAdocao.getStatus().name());
     response.setTipoMoradia(interesseAdocao.getTipoMoradia().name()); 
+    
     return response;
 }
 
@@ -112,20 +111,22 @@ public class InteresseAdocaoService {
     response.setId(interesse.getId());
     response.setDataSolicitacao(interesse.getDataSolicitacao());
     response.setMotivacao(interesse.getMotivacao());
-    response.setStatus( interesse.getStatus().name().trim().toUpperCase());
     response.setTipoMoradia(interesse.getTipoMoradia().name().trim().toUpperCase());
 
     PessoaDTOResponse pessoaResponse = new PessoaDTOResponse();
     pessoaResponse.setId(interesse.getPessoa().getId());
     pessoaResponse.setNome(interesse.getPessoa().getNome());
     pessoaResponse.setEmail(interesse.getPessoa().getEmail());
-
+    pessoaResponse.setTelefone(interesse.getPessoa().getTelefone());
+    pessoaResponse.setDataNascimento(interesse.getPessoa().getDataNascimento());
     response.setPessoa(pessoaResponse);
 
     AnimalDTOResponse animalResponse = new AnimalDTOResponse();
     animalResponse.setId(interesse.getAnimal().getId());
     animalResponse.setNome(interesse.getAnimal().getNome());
     animalResponse.setEspecie(interesse.getAnimal().getEspecie().name().trim().toUpperCase());
+    animalResponse.setSexo(interesse.getAnimal().getSexo().name().trim().toUpperCase());
+    animalResponse.setPorte(interesse.getAnimal().getPorte().name().trim().toUpperCase());
 
     response.setAnimal(animalResponse);
 

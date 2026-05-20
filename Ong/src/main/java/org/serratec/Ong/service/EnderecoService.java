@@ -72,7 +72,6 @@ public class EnderecoService {
 
     private EnderecoDTOResponse toResponse(Endereco endereco) {
     EnderecoDTOResponse response = new EnderecoDTOResponse();
-    response.setId(endereco.getId());
     response.setCidade(endereco.getCidade()); 
     response.setBairro(endereco.getBairro());
     response.setRua(endereco.getRua());  

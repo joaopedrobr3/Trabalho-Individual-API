@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -41,7 +40,6 @@ public class PessoaDTORequest {
     private LocalDate dataNascimento;
     
     @Schema(description = "ID do endereço cadastrado", example = "1")
-    @NotNull(message = "O campo 'idEndereco' não pode ficar vazio")
     private Long idEndereco;
     
     
@@ -85,6 +83,14 @@ public class PessoaDTORequest {
 
     public void setIdEndereco(Long idEndereco) {
         this.idEndereco = idEndereco;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     

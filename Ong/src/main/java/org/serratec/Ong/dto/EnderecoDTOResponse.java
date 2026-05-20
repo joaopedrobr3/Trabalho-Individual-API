@@ -10,21 +10,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 })
 public class EnderecoDTOResponse {
-    
 
-    private Long id;
     private String cidade;
     private String rua;
     private String bairro;
     private Integer numero;
+
     
+
     
     
     public EnderecoDTOResponse() {
     }
 
-    public EnderecoDTOResponse(String cidade, String rua, String bairro, Integer numero, Long id) {
-        this.id = id;
+    public EnderecoDTOResponse(String cidade, String rua, String bairro, Integer numero) {
         this.cidade = cidade;
         this.rua = rua;
         this.bairro = bairro;
@@ -57,13 +56,7 @@ public class EnderecoDTOResponse {
         this.numero = numero;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
     
     
     

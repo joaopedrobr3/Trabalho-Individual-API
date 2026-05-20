@@ -8,6 +8,7 @@ import org.serratec.Ong.dto.AnimalDTORequest;
 import org.serratec.Ong.dto.AnimalDTOResponse;
 import org.serratec.Ong.dto.AnimalDetalheDTOResponse;
 import org.serratec.Ong.dto.CaracteristicaDTOResponse;
+import org.serratec.Ong.dto.InteresseAdocaoDTOResponse;
 import org.serratec.Ong.enummerated.Especie;
 import org.serratec.Ong.enummerated.Porte;
 import org.serratec.Ong.enummerated.Sexo;
@@ -90,6 +91,7 @@ public class AnimalService {
     response.setSexo(animal.getSexo().name());
     response.setPorte(animal.getPorte().name());
     response.setEspecie(animal.getEspecie().name()); 
+    
     return response;
 }
 
@@ -107,8 +109,25 @@ public class AnimalService {
         .toList();
     response.setCaracteristicas(caracteristicas);
 
+     List<InteresseAdocaoDTOResponse> interesses = animal.getInteresse()
+    .stream()
+    .map(i -> {
+        InteresseAdocaoDTOResponse dto = new InteresseAdocaoDTOResponse();
+        dto.setId(i.getId());
+        dto.setMotivacao(i.getMotivacao());
+        dto.setTipoMoradia(i.getTipoMoradia().name());
+        dto.setDataSolicitacao(i.getDataSolicitacao());
+        
+        
+        return dto;
+    })
+    .toList();
     
+    response.setInteresses(interesses);
 
     return response;
-}
+     }
+   
+
+
 }  

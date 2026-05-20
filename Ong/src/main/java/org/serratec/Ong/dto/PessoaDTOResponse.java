@@ -11,14 +11,14 @@ public class PessoaDTOResponse {
         "nome",
         "telefone",
         "email",
-        "cidade"
+        "dataNascimento"
+        
     })
     
     private Long id;
     private String nome;
     private String telefone;
     private String email;
-    private String cidade;
     private LocalDate dataNascimento;
     
     
@@ -41,7 +41,6 @@ public class PessoaDTOResponse {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
-        this.cidade = cidade;
         this.dataNascimento = dataNascimento;
     }
 
@@ -74,12 +73,7 @@ public class PessoaDTOResponse {
         this.email = email;
     }
     
-    public String getCidade() {
-        return cidade;
-    }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+    
 
 
     public LocalDate getDataNascimento() {
