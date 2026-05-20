@@ -95,7 +95,7 @@ public class AnimalService {
     return response;
 }
 
-     private AnimalDetalheDTOResponse toDetalheResponse(Animal animal) {
+    private AnimalDetalheDTOResponse toDetalheResponse(Animal animal) {
     AnimalDetalheDTOResponse response = new AnimalDetalheDTOResponse();
     response.setId(animal.getId());
     response.setNome(animal.getNome());
@@ -112,14 +112,14 @@ public class AnimalService {
      List<InteresseAdocaoDTOResponse> interesses = animal.getInteresse()
     .stream()
     .map(i -> {
-        InteresseAdocaoDTOResponse dto = new InteresseAdocaoDTOResponse();
-        dto.setId(i.getId());
-        dto.setMotivacao(i.getMotivacao());
-        dto.setTipoMoradia(i.getTipoMoradia().name());
-        dto.setDataSolicitacao(i.getDataSolicitacao());
+        InteresseAdocaoDTOResponse interesse = new InteresseAdocaoDTOResponse();
+        interesse.setId(i.getId());
+        interesse.setMotivacao(i.getMotivacao());
+        interesse.setTipoMoradia(i.getTipoMoradia().name());
+        interesse.setDataSolicitacao(i.getDataSolicitacao());
         
         
-        return dto;
+        return interesse;
     })
     .toList();
     
