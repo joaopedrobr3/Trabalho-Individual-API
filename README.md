@@ -113,6 +113,71 @@ mvn spring-boot:run
 http://localhost:8080/swagger-ui.html
 ```
 
+## 🧩 Enums Disponíveis
+
+A API utiliza enums para padronizar valores fixos em algumas entidades.
+
+---
+
+### 🐾 Sexo (Animal)
+
+```text
+MACHO
+FEMEA
+```
+
+---
+
+### 🐶 Porte (Animal)
+
+```text
+PEQUENO
+MEDIO
+GRANDE
+```
+
+---
+
+### 🐕 Espécie (Animal)
+
+```text
+CANINO
+FELINO
+OUTRO
+```
+
+---
+
+### 🧠 Personalidade (Característica)
+
+```text
+AMIGAVEL
+TIMIDO
+ASSUSTADO
+BRAVO
+```
+
+---
+
+### 🏥 Saúde (Característica)
+
+```text
+JOVEM_SAUDAVEL
+JOVEM_DEBILITADO
+IDOSO_SAUDAVEL
+IDOSO_DEBILITADO
+CUIDADOS_ESPECIAIS_NECESSARIOS
+```
+
+---
+
+### 🏠 Tipo de Moradia (Interesse de Adoção)
+
+```text
+CASA
+APARTAMENTO
+```
+
 ---
 
 # 📖 Endpoints
