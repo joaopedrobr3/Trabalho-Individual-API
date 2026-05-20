@@ -52,6 +52,7 @@ public class AnimalService {
         animal.setEspecie(Especie.valueOf(request.getEspecie().trim().toUpperCase()));
         List<Caracteristica> caracteristicas = caracteristicaRepository.findAllById(request.getIdcaracteristica());
         animal.setCaracteristica(caracteristicas);
+        
         animalRepository.save(animal);
 
 

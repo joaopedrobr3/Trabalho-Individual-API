@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 
 @RestController
@@ -29,28 +32,50 @@ public class AnimalController {
 
     @GetMapping
     @Operation(summary = "Lista todos os animais", description = "Retorna uma lista com todos os animais cadastrados")
+    @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "Animais encontrados"),
+    })
     public ResponseEntity<List<AnimalDTOResponse>> listar() {
         return ResponseEntity.ok(animalService.listar());
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Busca animal por ID", description = "Retorna os detalhes de um animal pelo ID")
+    @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "Animal encontrado", content = @Content),
+    @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content),
+    @ApiResponse(responseCode = "409", description = "Recurso já cadastrado no sistema", content = @Content)
+    })
     public ResponseEntity<AnimalDTOResponse> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(animalService.buscarPorId(id));
     }
-
+    
+    @ApiResponses(value = {
+    @ApiResponse(responseCode = "201", description = "Animal cadastrado com sucesso", content = @Content),
+    @ApiResponse(responseCode = "400", description = "Dados inválidos ou campos obrigatórios vazios", content = @Content),
+    @ApiResponse(responseCode = "409", description = "Animal já cadastrado no sistema", content = @Content)
+})
     @PostMapping
     @Operation(summary = "Cadastra um animal", description = "Cria um novo animal no sistema")
     public ResponseEntity<AnimalDTOResponse> inserir(@RequestBody @Valid AnimalDTORequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.inserir(request));
     }
-
+    
+    @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "Animal atualizado com sucesso", content = @Content),
+    @ApiResponse(responseCode = "400", description = "Dados inválidos ou campos obrigatórios vazios", content = @Content),
+    @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content)
+})
     @PutMapping("/{id}")
     @Operation(summary = "Atualiza um animal", description = "Atualiza os dados de um animal existente")
     public ResponseEntity<AnimalDTOResponse> atualizar(@PathVariable Long id, @RequestBody @Valid AnimalDTORequest request) {
         return ResponseEntity.ok(animalService.atualizar(id, request));
     }
-
+    
+    @ApiResponses(value = {
+    @ApiResponse(responseCode = "204", description = "Animal removido com sucesso", content = @Content),
+    @ApiResponse(responseCode = "404", description = "Animal não encontrado com o ID informado", content = @Content)
+})
     @DeleteMapping("/{id}")
     @Operation(summary = "Remove um animal", description = "Remove um animal pelo ID")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
