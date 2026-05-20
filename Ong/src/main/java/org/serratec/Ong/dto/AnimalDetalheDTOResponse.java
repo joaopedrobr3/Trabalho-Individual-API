@@ -2,6 +2,8 @@ package org.serratec.Ong.dto;
 
 import java.util.List;
 
+
+
 public class AnimalDetalheDTOResponse extends AnimalDTOResponse {
     
     private List<CaracteristicaDTOResponse> caracteristica;
@@ -17,12 +19,16 @@ public class AnimalDetalheDTOResponse extends AnimalDTOResponse {
         this.interesse = interesse;
     }
 
+    public AnimalDetalheDTOResponse() {
+        
+    }
+
     public List<CaracteristicaDTOResponse> getCaracteristicas() {
         return caracteristica;
     }
     public void setCaracteristicas(List<CaracteristicaDTOResponse> caracteristicas) {
-        this.caracteristica = caracteristicas;
-    }
+    this.caracteristica = caracteristicas; 
+}
     public List<InteresseAdocaoDTOResponse> getInteresses() {
         return interesse;
     }

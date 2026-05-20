@@ -31,6 +31,18 @@ public class AnimalDTORequest {
     
     
     
+    public AnimalDTORequest(@NotBlank(message = "O campo 'nome' não pode ficar vazio") String nome,
+            @NotBlank(message = "O campo 'sexo' não pode ficar vazio") String sexo,
+            @NotBlank(message = "O campo 'porte' não pode ficar vazio") String porte,
+            @NotBlank(message = "O campo 'especie' não pode ficar vazio! Se não tiver uma raça definida, defina como SRD") String especie,
+            @NotNull(message = "O campo 'caracteristica' não pode ficar vazio") List<Long> idcaracteristica) {
+        this.nome = nome;
+        this.sexo = sexo;
+        this.porte = porte;
+        this.especie = especie;
+        this.idcaracteristica = idcaracteristica;
+    }
+    
     public String getPorte() {
         return porte;
     }
