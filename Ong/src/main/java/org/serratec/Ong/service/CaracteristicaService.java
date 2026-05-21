@@ -90,7 +90,7 @@ public class CaracteristicaService {
             animal.getEspecie().name()  
         ))
         .toList();
-
+   
     response.setAnimal(animais);
 
     return response;
